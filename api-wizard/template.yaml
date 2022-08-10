@@ -1,0 +1,42 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
+kind: Template
+metadata:
+  name: api-template
+  title: REST API Template
+  description: An template to create REST APIs
+spec:
+  owner: user:guest
+  type: service
+
+  parameters:
+    - title: API Overview
+      required:
+        - name
+        - version
+      properties:
+        name:
+          title: Name
+          type: string
+          description: The name of your API
+          ui:autofocus: true
+          ui:options:
+            rows: 5
+        description:
+          title: Description
+          type: string
+          description: Describe your API
+        version:
+          title: Version
+          type: number
+          default: 1
+
+  # These steps are executed in the scaffolder backend, using data that we gathered
+  # via the parameters above.
+  steps:
+    - id: debug-stuff
+      name: Debug
+      action: debug:log
+      input:
+        message: Hello!
+        listWorkspace: false
