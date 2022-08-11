@@ -19,41 +19,74 @@ spec:
           title: Name
           type: string
           description: The name of your API
-          ui:autofocus: true
-          ui:options:
-            rows: 5
         description:
           title: Description
           type: string
           description: Describe your API
+          ui:autofocus: true
+          ui:options:
+            rows: 5
         version:
           title: Version
           type: number
           default: 1
-        domainModels:
-          title: Domain Model Definitions
-          type: array
-          items:
-            title: Domain Model 
-            type: object
-            properties:
-              domainModelName:
-                title: Domain Model Name
-                type: string
-              domainModelProperties:
-                title: Properties
-                type: array
-                items:
-                  type: object
-                  properties:
-                    propertyName: 
-                      title: Property Name
-                      type: string
-                      description: The name of the property
+    - title: Owner
+      required:
+        - name
+        - email
+        - team
+      properties:
+        name:
+          title: Owner Name
+          type: string
+          description: The name of the person to contact regarding this API
+        email:
+          title: Owner e-mail
+          type: string
+          description: The e-mail of the person to contact regarding this API
+        team:
+          title: Team
+          type: string
+          description: The team/division responsible for this API
+    - title: Domain Model Definitions
+      type: array
+      items:
+        title: Domain Model
+        type: object
+        properties:
+          domainModelName:
+            title: Domain Model Name
+            type: string
+            domainModelProperties:
+              title: Properties
+              type: array
+              items:
+                type: object
+                properties:
+                  propertyName:
+                    title: Property Name
+                    type: string
+                    description: The name of the property
                     propertyValue:
                       title: Property Value Type
                       type: string
                       description: The type of this property's value
+                      enum: ["string","integer","number","boolean","domain model"]
+    - title: Documentation
+      type: object
+      properties:
+        documents:
+          type: array
+          title: Additional Documentation
+          items:
+              type: string
+              format: data-url
+        samples:
+          type: array
+          title: Sample requests/responses
+          items:
+              type: string
+              format: data-url
 
   # These steps are executed in the scaffolder backend, using data that we gathered
   # via the parameters above.
