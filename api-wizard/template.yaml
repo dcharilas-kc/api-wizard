@@ -23,24 +23,21 @@ spec:
           title: Description
           type: string
           description: Describe your API
-          ui:autofocus: true
-          ui:options:
-            rows: 5
         version:
           title: Version
           type: number
           default: 1
     - title: Owner
       required:
-        - name
-        - email
+        - ownerName
+        - ownerEmail
         - team
       properties:
-        name:
+        ownerName:
           title: Owner Name
           type: string
           description: The name of the person to contact regarding this API
-        email:
+        ownerEmail:
           title: Owner e-mail
           type: string
           description: The e-mail of the person to contact regarding this API
@@ -72,6 +69,15 @@ spec:
                       type: string
                       description: The type of this property's value
                       enum: ["string","integer","number","boolean","domain model"]
+                #dependencies:
+                #  propertyValue:
+                #    oneOf:
+                #      - properties:
+                #          propertyValue:
+                #            enum: ["domain model"]
+                #          seachModel:
+                #            title: Search Domain Model
+                #            type: string
     - title: Documentation
       type: object
       properties:
