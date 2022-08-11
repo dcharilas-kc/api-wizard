@@ -30,6 +30,30 @@ spec:
           title: Version
           type: number
           default: 1
+        domainModels:
+          title: Domain Model Definitions
+          type: array
+          items:
+            title: Domain Model 
+            type: object
+            properties:
+              domainModelName:
+                title: Domain Model Name
+                type: string
+              domainModelProperties:
+                title: Properties
+                type: array
+                items:
+                  type: object
+                  properties:
+                    propertyName: 
+                      title: Property Name
+                      type: string
+                      description: The name of the property
+                    propertyValue:
+                      title: Property Value Type
+                      type: string
+                      description: The type of this property's value
 
   # These steps are executed in the scaffolder backend, using data that we gathered
   # via the parameters above.
