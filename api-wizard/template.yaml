@@ -26,7 +26,7 @@ spec:
           ui:widget: textarea
           ui:autofocus: true
           ui:options:
-            rows: 5
+            rows: 3
         version:
           title: Version
           type: number
