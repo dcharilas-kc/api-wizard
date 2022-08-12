@@ -93,7 +93,7 @@ spec:
                         type: string
                     required:
                       - searchModel
-    - title: Operations Definitions
+    - title: Operation Definitions
       type: array
       items:
         title: Controller
