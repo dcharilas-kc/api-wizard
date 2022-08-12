@@ -23,6 +23,10 @@ spec:
           title: Description
           type: string
           description: Describe your API
+          ui:widget: textarea
+          ui:autofocus: true
+          ui:options:
+            rows: 5
         version:
           title: Version
           type: number
@@ -74,6 +78,9 @@ spec:
                   type: string
                   description: The type of this property's value
                   enum: [ "string","integer","number","boolean","domain model" ]
+                listFlag:
+                  type: boolean
+                  title: Property contains array of values
               allOf:
                 - if:
                     properties:
@@ -82,6 +89,7 @@ spec:
                   then:
                     properties:
                       searchModel:
+                        title: Find Domain Model
                         type: string
                     required:
                       - searchModel
