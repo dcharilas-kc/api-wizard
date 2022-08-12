@@ -27,7 +27,7 @@ spec:
           title: Version
           type: number
           default: 1
-    - title: Owner
+    - title: API Owner
       required:
         - ownerName
         - ownerEmail
@@ -54,30 +54,32 @@ spec:
           domainModelName:
             title: Domain Model Name
             type: string
-            domainModelProperties:
-              title: Properties
-              type: array
-              items:
-                type: object
-                properties:
-                  propertyName:
-                    title: Property Name
-                    type: string
-                    description: The name of the property
-                    propertyValue:
-                      title: Property Value Type
-                      type: string
-                      description: The type of this property's value
-                      enum: ["string","integer","number","boolean","domain model"]
-                #dependencies:
-                #  propertyValue:
-                #    oneOf:
-                #      - properties:
-                #          propertyValue:
-                #            enum: ["domain model"]
-                #          seachModel:
-                #            title: Search Domain Model
-                #            type: string
+          domainModelProperties:
+            title: Properties
+            type: array
+            items:
+              type: object
+              properties:
+                propertyName:
+                  title: Property Name
+                  type: string
+                  description: The name of the property
+                propertyValue:
+                  title: Property Value Type
+                  type: string
+                  description: The type of this property's value
+                  enum: ["string","integer","number","boolean","domain model"]
+              allOf:
+                - if:
+                    properties:
+                      propertyValue:
+                        const: "domain model"
+                  then:
+                    properties:
+                      searchModel:
+                        type: string
+                    required:
+                    - searchModel
     - title: Documentation
       type: object
       properties:
