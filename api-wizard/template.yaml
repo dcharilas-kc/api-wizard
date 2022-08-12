@@ -125,7 +125,7 @@ spec:
                   title: Operation Type
                   type: string
                   description: The type of this property's value
-                  enum: [ "GET","POST","PATCH","PUT","DELETE" ]
+                  enum: [ "Retrieve records","Create new record","Update whole record","Update specific fields of record","Delete record" ]
     - title: Documentation
       type: object
       properties:
