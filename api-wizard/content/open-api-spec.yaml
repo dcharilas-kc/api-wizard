@@ -1,0 +1,37 @@
+openapi: 3.0.0
+info:
+  title: ${{ values.apiName }}
+  description: ${{ values.apiDescription }}
+  termsOfService:
+  contact:
+    name: ${{ values.apiContactName }}
+    # url: ${{ values.apiContactUrl }}
+    email: ${{ values.apiContactEmail }}
+  version: ${{ values.apiVersion }}
+  license:
+    name: Apache-2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+servers: # This should specify the location of servers where the API is deployed.
+paths: # This needs to be a list of all the paths specified by the user: we need a for-loop here, I think
+components: # These are all reusable objects so could be stored centrally somewhere and dropped in via select boxes on the form?
+  schemas: {% for schema in values.schemas %}
+    ${{schema.domainModelName}}:
+      type: object
+      properties: {% for property in schema.domainModelProperties %}
+        ${{ property.propertyName }}:
+          type: ${{ property.propertyValue }}{% endfor %}{% endfor %}
+  responses:
+  parameters:
+  examples:
+  requestBodies:
+  headers:
+  securitySchemes:
+  links:
+  callbacks:
+security: # Need to see some examples of this to understand what its for, exactly
+tags: # A list, needs a for-loop here
+  # Should map to a "tags" value in an "operation" object
+  # name: ${{ tag.name }}
+  # description: ${{ tag.description }}
+  # externalDocs: ${{ tag.externalDocs }}
+externalDocs:
