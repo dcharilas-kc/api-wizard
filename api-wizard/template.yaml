@@ -75,11 +75,27 @@ spec:
                       - properties: 
                           propertyValue:
                             enum : [ "string" ]
-                          stringFormat: 
-                            title: "Value Format"
+                          propertyValueFormat: 
+                            title: "Input will be"
                             type: "string"
-                            enum: ["byte", "binary", "date", "date-time", "password"]
-                            enumNames: ["Base 64 encoded", "Octet String (00 FF...)", "Date (YYYY-MM-DD)", "Date and time (YYYY-MM-DD HH:MM:SS)", "Password"]
+                            enum: ["", "byte", "binary", "date", "date-time", "password"]
+                            enumNames: ["Plain", "Base 64 encoded", "Octet String (00 FF...)", "Date (YYYY-MM-DD)", "Date and time (YYYY-MM-DD HH:MM:SS)", "Password"]
+                      - properties:
+                          propertyValue:
+                            enum: ["integer"]
+                          propertyValueFormat:
+                            title: "Potential values will be..."
+                            type: "string"
+                            enum: [ "int32", "int64" ]
+                            enumNames: ["Between -2147483647 and 2147483647 (inclusive)", "Less than -2147483647 or greater than 2147483647"]
+                      - properties:
+                          propertyValue:
+                            enum: ["number"]
+                          propertyValueFormat:
+                            title: "Potential values need..."
+                            type: "string"
+                            enum: [ "double", "float" ]
+                            enumNames: ["Up to 7 decimal digits", "More than 7 decimal digits"]
     - title: Domain Model Operations
       required: 
         - operations
